@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+.title {
+  text-align: center;
+}
+
+.mainContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  padding: 15px;
+}
+
+#structure {
+  background-color: aqua;
+  border: 1px solid red;
+  padding: 5px;
+  font-size: 15px;
+}
