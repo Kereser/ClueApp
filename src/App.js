@@ -11,10 +11,11 @@ import {
   TableBody,
   Button,
   Typography,
+  IconButton,
 } from '@mui/material'
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule'
-import DoneIcon from '@mui/icons-material/Done'
-import ClearIcon from '@mui/icons-material/Clear'
+import ToggleButtons from './components/ToggleButton'
+import AddBoxIcon from '@mui/icons-material/AddBox'
 // import { styled } from '@mui/material/styles'
 // import Paper from '@mui/material/Paper'
 
@@ -56,7 +57,127 @@ function TableGame() {
       <HorizontalRuleIcon fontSize="small" />,
       <HorizontalRuleIcon fontSize="small" />,
     ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
+    [
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+      <HorizontalRuleIcon fontSize="small" />,
+    ],
   ])
+  const [symb, setSymb] = useState(<HorizontalRuleIcon fontSize="small" />)
 
   function addColumn() {
     for (let i = 0; i < variable.length; i++) {
@@ -72,10 +193,11 @@ function TableGame() {
     }
     return variable
   }
+
   function setBlock(position) {
     const [x, y] = position
     const newState = [...variable]
-    newState[x][y] = <ClearIcon />
+    newState[x][y] = symb
     setVariable(newState)
     // setVariable()
   }
@@ -86,13 +208,12 @@ function TableGame() {
 
   const handleVote = (position) => {
     return () => {
-      console.log(position)
       setBlock(position)
     }
   }
 
-  const handleExtraColumn = () => {
-    addColumn()
+  const handleChangeSymbol = (symb) => {
+    setSymb(symb)
   }
 
   function anexarTablas(variable, Index) {
@@ -112,97 +233,122 @@ function TableGame() {
   return (
     <>
       <TableContainer component={Paper}>
-        <Table size="small">
-          <TableHead sx={{ backgroundColor: '#77f' }}>
-            <TableRow>
-              <TableCell variant="head"></TableCell>
+        <Table size="small" sx={{ backgroundColor: 'rgba(236,235,236,1)' }}>
+          <TableHead sx={{ backgroundColor: 'rgba(215,219,227,1)' }}>
+            <TableRow hover>
+              <TableCell variant="head">
+                <Button
+                  variant="contained"
+                  size="small"
+                  sx={{ backgroundColor: 'rgb(142,95,76,1)' }}
+                  endIcon={<AddBoxIcon />}
+                  onClick={() => addColumn()}
+                >
+                  Add
+                </Button>
+              </TableCell>
               {anexarTablas(variable, 0)}
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow sx={{ backgroundColor: '#ff0' }}>
-              <TableCell>Suspects</TableCell>
+            <TableRow sx={{ backgroundColor: 'rgba(29,33,52,1)' }}>
+              <TableCell sx={{ color: 'white' }}>Suspects</TableCell>
             </TableRow>
-            <TableRow>
-              <TableCell>Verdi</TableCell>
+            <TableRow hover>
+              <TableCell>Sr. Verdi</TableCell>
               {anexarTablas(variable, 1)}
             </TableRow>
-            <TableRow>
-              <TableCell>Mora</TableCell>
+            <TableRow hover>
+              <TableCell>Prof. Moradillo</TableCell>
               {anexarTablas(variable, 2)}
             </TableRow>
-            <TableRow>
+            <TableRow hover>
               <TableCell>Blanca</TableCell>
               {anexarTablas(variable, 3)}
             </TableRow>
-            <TableRow>
-              <TableCell>Mostaza</TableCell>
+            <TableRow hover>
+              <TableCell>Coronel Mostaza</TableCell>
               {anexarTablas(variable, 4)}
             </TableRow>
-            <TableRow>
-              <TableCell>Escarlata</TableCell>
+            <TableRow hover>
+              <TableCell>Srita. Escarlata</TableCell>
+              {anexarTablas(variable, 5)}
             </TableRow>
-            <TableRow>
-              <TableCell>Celeste</TableCell>
+            <TableRow hover>
+              <TableCell>Sr. Azulino</TableCell>
+              {anexarTablas(variable, 6)}
             </TableRow>
-            <TableRow sx={{ backgroundColor: '#f88' }}>
-              <TableCell>Armas</TableCell>
+            <TableRow sx={{ backgroundColor: 'rgb(142,95,76,1)' }}>
+              <TableCell sx={{ color: 'white' }}>Armas</TableCell>
             </TableRow>
-            <TableRow>
+            <TableRow hover>
               <TableCell>Cuchillo</TableCell>
+              {anexarTablas(variable, 7)}
             </TableRow>
-            <TableRow>
+            <TableRow hover>
               <TableCell>Pistola</TableCell>
+              {anexarTablas(variable, 8)}
             </TableRow>
-            <TableRow>
+            <TableRow hover>
               <TableCell>Cuerda</TableCell>
+              {anexarTablas(variable, 9)}
             </TableRow>
-            <TableRow>
+            <TableRow hover>
               <TableCell>Pesas</TableCell>
+              {anexarTablas(variable, 10)}
             </TableRow>
-            <TableRow>
+            <TableRow hover>
               <TableCell>Candelabro</TableCell>
+              {anexarTablas(variable, 11)}
             </TableRow>
-            <TableRow>
-              <TableCell>Tubo</TableCell>
+            <TableRow hover>
+              <TableCell>Veneno</TableCell>
+              {anexarTablas(variable, 12)}
             </TableRow>
-            <TableRow sx={{ backgroundColor: '#3fa' }}>
-              <TableCell>Habitaciones</TableCell>
+            <TableRow sx={{ backgroundColor: 'rgba(29,33,52,1)' }}>
+              <TableCell sx={{ color: 'white' }}>Habitaciones</TableCell>
             </TableRow>
-            <TableRow>
+            <TableRow hover>
               <TableCell>Hab. de Huespedes</TableCell>
+              {anexarTablas(variable, 13)}
             </TableRow>
-            <TableRow>
+            <TableRow hover>
               <TableCell>Comedor</TableCell>
+              {anexarTablas(variable, 14)}
             </TableRow>
-            <TableRow>
+            <TableRow hover>
               <TableCell>Observatorio</TableCell>
+              {anexarTablas(variable, 15)}
             </TableRow>
-            <TableRow>
+            <TableRow hover>
               <TableCell>Cocina</TableCell>
+              {anexarTablas(variable, 16)}
             </TableRow>
-            <TableRow>
+            <TableRow hover>
               <TableCell>Teatro</TableCell>
+              {anexarTablas(variable, 17)}
             </TableRow>
-            <TableRow>
+            <TableRow hover>
               <TableCell>Spa</TableCell>
+              {anexarTablas(variable, 18)}
             </TableRow>
-            <TableRow>
+            <TableRow hover>
               <TableCell>Sala</TableCell>
+              {anexarTablas(variable, 19)}
             </TableRow>
-            <TableRow>
+            <TableRow hover>
               <TableCell>Patio</TableCell>
+              {anexarTablas(variable, 20)}
             </TableRow>
-            <TableRow>
+            <TableRow hover>
               <TableCell>Vestibulo</TableCell>
+              {anexarTablas(variable, 21)}
             </TableRow>
           </TableBody>
         </Table>
       </TableContainer>
-      <Typography component="h3" variant="h4">
-        Symbols:
-      </Typography>
-      <Button onClick={handleExtraColumn}>Extra Column</Button>
+      <Typography component="h2">Symbols:</Typography>
+      <ToggleButtons handleChangeSymbol={handleChangeSymbol} />
     </>
   )
 }
