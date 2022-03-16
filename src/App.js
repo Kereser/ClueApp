@@ -1,6 +1,6 @@
 import React from 'react'
 import Home from './components/Home'
-// import TableGame from './components/TableGame'
+import TableGame from './components/TableGame'
 import { Route } from 'wouter'
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
     <div className="container">
       <Route path="/" component={Home} />
       {/* <Route path="/game" component={TableGame} /> */}
+      <Route path="/Game" component={TableGame} />
     </div>
   )
 }
