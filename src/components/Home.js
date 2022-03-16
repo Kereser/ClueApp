@@ -1,72 +1,69 @@
-import {
-  Button,
-  Container,
-  FormControl,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Paper,
-  Select,
-  TextField,
-  Typography,
-} from '@mui/material'
-import { Box } from '@mui/system'
 import { useState } from 'react'
-import { Link } from 'wouter'
-import { useLocation } from 'wouter'
+import { v4 as uuidv4 } from 'uuid'
+import ControlledInput from './ControlledInput'
 
 const Home = () => {
   const [inputQuantity, setInputQuantity] = useState('')
-  const [names, setNames] = useState([])
 
-  const inputForName = (number) => {
-    if (!number) {
+  const inputCreator = (inputQuantity) => {
+    if (!inputQuantity) {
       return null
     }
+
+    let inputs = []
+
+    for (let i = 0; i < inputQuantity; i++) {
+      inputs.push(
+        <div className="col-12 input-group" key={uuidv4()}>
+          <span className="input-group-text">{`P${i + 1}`}</span>
+          <ControlledInput key={uuidv4()} />
+        </div>,
+      )
+    }
+
+    return inputs
   }
 
+  console.log(inputQuantity)
+
   return (
-    <Box
-      sx={{
-        paddingTop: 25,
-        backgroundColor: 'rgba(20,43,28,1)',
-        borderRadius: 2,
-      }}
-    >
-      <Typography
-        component="h1"
-        variant="h5"
-        align="center"
-        sx={{ color: 'white' }}
-      >
-        ClUE GAME
-      </Typography>
-      <Box sx={{ backgroundColor: 'rgba(122,69,31,1)' }}>
-        <Grid container>
-          <Grid item xs={6}>
-            <Typography align="center">Numero Jugadores</Typography>
-          </Grid>
-          <Grid item xs={6} align="center">
-            <Select
-              color="secondary"
-              size="small"
-              value={inputQuantity}
-              onChange={({ target }) => setInputQuantity(Number(target.value))}
-            >
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
-              <MenuItem value={4}>4</MenuItem>
-              <MenuItem value={5}>5</MenuItem>
-              <MenuItem value={6}>6</MenuItem>
-            </Select>
-          </Grid>
-        </Grid>
-      </Box>
-      <Button>
-        <Link to="/Game">Ingresar a la app</Link>
-      </Button>
-    </Box>
+    <div className="container px-1">
+      <div className="row gx-1 gy-2">
+        <div className="col-sm-12">
+          <div className="p-3 border bg-light text-center">Clue App</div>
+        </div>
+        <div className="col-8">
+          <div className="p-2 border bg-light text-center">
+            Number of players
+          </div>
+        </div>
+        <div className="col-4">
+          <select
+            className="form-select p-2"
+            value={inputQuantity}
+            onChange={({ target }) => setInputQuantity(Number(target.value))}
+          >
+            <option value={0}>Open this select menu</option>
+            <option value={1}>1</option>
+            <option value={2}>2</option>
+            <option value={3}>3</option>
+            <option value={4}>4</option>
+            <option value={5}>5</option>
+            <option value={6}>6</option>
+          </select>
+        </div>
+        <div className="col-12 text-center">
+          <button
+            className="btn btn-dark"
+            type="button"
+            onClick={() => inputCreator(inputQuantity)}
+          >
+            Create Players
+          </button>
+        </div>
+        {inputCreator(inputQuantity)}
+      </div>
+    </div>
   )
 }
 
