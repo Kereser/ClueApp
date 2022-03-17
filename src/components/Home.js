@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { Link } from 'wouter'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   const [inputFields, setInputFields] = useState([
@@ -71,7 +71,12 @@ const Home = () => {
           <div className="col-6 mx-auto d-grid gap-2">
             <Link
               to="/Game"
-              state={{ names: inputFields }}
+              state={{
+                names: [
+                  { id: uuidv4(), firstName: 'Confirmado' },
+                  ...inputFields,
+                ],
+              }}
               type="submit"
               className="text-info btn btn-secondary btn-sm"
             >
