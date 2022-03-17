@@ -14,7 +14,6 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/game" component={TableGame} /> */}
           <Route path="/Game" element={<TableGame />} />
         </Routes>
       </Router>
