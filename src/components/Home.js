@@ -23,6 +23,12 @@ const Home = () => {
     setInputFields(newInputs)
   }
 
+  const handleRemoveClick = () => {
+    const newInputs = [...inputFields]
+    newInputs.pop()
+    setInputFields(newInputs)
+  }
+
   const submit = (e) => {
     e.preventDefault()
     console.log(inputFields)
@@ -55,7 +61,11 @@ const Home = () => {
             </div>
           ))}
           <div className="col-6 text-start">
-            <button className="btn btn-dark btn-sm" type="button">
+            <button
+              onClick={handleRemoveClick}
+              className="btn btn-dark btn-sm"
+              type="button"
+            >
               Delete Player
             </button>
           </div>

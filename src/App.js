@@ -21,4 +21,8 @@ function App() {
   )
 }
 
+//? Arreglar la vista pq en un lado tiene padding y en el otro no.
+//? Arreglar el inicio para q este en la mitad.
+//? Funcionalidad del boton para eliminar
+
 export default App
